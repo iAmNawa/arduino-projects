@@ -47,6 +47,12 @@ void loop() {
   delay(10);  
   switch (color) {
     case 1:
+    lcd.clear();
+    lcd.setCursor(0, 0);
+    lcd.print("Color : ");
+    lcd.setCursor(0, 1);
+    lcd.print("Red");
+    Serial.println(" - (Red Color)");
     //bottomServo.write(50);
     break;
     case 2:
@@ -54,9 +60,21 @@ void loop() {
     break;
     case 3:
     //bottomServo.write(100);
+    lcd.clear();
+    lcd.setCursor(0, 0);
+    lcd.print("Color : ");
+    lcd.setCursor(0, 1);
+    lcd.print("Green");
+    Serial.println(" - (Green Color)");
     break;
     case 4:
     //bottomServo.write(125);
+    lcd.clear();
+    lcd.setCursor(0, 0);
+    lcd.print("Color : ");
+    lcd.setCursor(0, 1);
+    lcd.print("Yellow");
+    Serial.println(" - (Yellow Color)");
     break;
     case 5:
     //bottomServo.write(150);
@@ -117,16 +135,16 @@ int readColor() {
   Serial.print(frequency);//printing RED color frequency
   Serial.println("  ");
   delay(50);
-  if(R<45 & R>32 & G<65 & G>55){
+  if(G - B >= 10 && G - B <= 25 && G - ( 2 * R ) >= 8 ){
     color = 1; // Red
   }
   if(G<55 & G>43 & B<47 &B>35){
     color = 2; // Orange
   }
-  if(R<53 & R>40 & G<53 & G>40){
+  if(R<160 & G<150 & G>37){
     color = 3; // Green
   }
-  if(R<38 & R>24 & G<44 & G>30){
+  if(R<1){
     color = 4; // Yellow
   }
   if(R<56 & R>46 & G<65 & G>55){
