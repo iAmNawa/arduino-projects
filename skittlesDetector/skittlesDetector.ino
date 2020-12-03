@@ -1,8 +1,3 @@
-/*     Arduino Project - Color Sorting Machine
- *
- *  by Dejan Nedelkovski, www.HowToMechatronics.com
- *
- */
 #include <Servo.h>
 #include <LiquidCrystal.h>
 LiquidCrystal lcd(8, 9, 10, 11, 12, 13);
@@ -30,21 +25,21 @@ void setup() {
   lcd.setCursor(5, 0);
   lcd.print("Arduino");
   lcd.setCursor(1, 1);
-  lcd.print("Color Detector");
+  lcd.print("Color Detection");
   Serial.begin(9600);
 }
 void loop() {
   //topServo.write(115);
   delay(500);
-  
+
   for(int i = 115; i > 65; i--) {
     //topServo.write(i);
     delay(2);
   }
   delay(500);
-  
+
   color = readColor();
-  delay(10);  
+  delay(10);
   switch (color) {
     case 1:
     lcd.clear();
@@ -82,18 +77,18 @@ void loop() {
     case 6:
     //bottomServo.write(175);
     break;
-    
+
     case 0:
     break;
   }
   delay(300);
-  
+
   for(int i = 65; i > 29; i--) {
     //topServo.write(i);
     delay(2);
-  } 
+  }
   delay(200);
-  
+
   for(int i = 29; i < 115; i++) {
     //topServo.write(i);
     delay(2);
@@ -153,5 +148,5 @@ int readColor() {
   if (G<58 & G>45 & B<40 &B>26){
     color = 6; // Blue
   }
-  return color;  
+  return color;
 }
